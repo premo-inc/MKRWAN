@@ -328,6 +328,9 @@ public:
     set(NWKS_KEY, nwkSKey);
     set(APPS_KEY, appSKey);
     network_joined = join(timeout);
+    if (waitResponse() != 1) {
+      return 0;
+    }
     return (getJoinStatus() == 1);
   }
 
@@ -924,11 +927,6 @@ private:
     if (waitResponse(timeout, "+EVENT=1,1") != 1) {
       return false;
     }
-#if 1
-    if (waitResponse() != 1) {
-      return false;
-    }
-#endif
     return true;
   }
 
