@@ -924,6 +924,11 @@ private:
     if (waitResponse(timeout, "+EVENT=1,1") != 1) {
       return false;
     }
+#if 1
+    if (waitResponse() != 1) {
+      return false;
+    }
+#endif
     return true;
   }
 
